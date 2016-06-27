@@ -18,7 +18,7 @@ const CDRSpecBlock PENDING = nil;
 
 - (id)initWithText:(NSString *)text andBlock:(CDRSpecBlock)block {
     if (self = [super initWithText:text]) {
-        block_ = [block copy];
+        block_ = [[block autorelease] copy];
         state_ = CDRExampleStateIncomplete;
     }
     return self;
@@ -101,6 +101,12 @@ const CDRSpecBlock PENDING = nil;
 
     [block_ release];
     block_ = nil;
+}
+
+- (void)cleanUp {
+//    if ([parent_ respondsToSelector:@selector(cleanUp)]) {
+//        [parent_ cleanUp];
+//    }
 }
 
 #pragma mark Private interface

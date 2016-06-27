@@ -56,6 +56,7 @@ void fail(NSString *);
 
 @interface CDRSpec (XCTestSupport)
 - (id)testSuiteWithRandomSeed:(unsigned int)seed dispatcher:(CDRReportDispatcher *)dispatcher;
+- (void)cleanUp;
 @end
 
 @interface CDRSpec (SpecDeclaration)

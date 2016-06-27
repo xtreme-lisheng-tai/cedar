@@ -37,7 +37,7 @@
     runBlock();
 
     [self.dispatcher runDidComplete];
-
+    [runBlock release];
     return [self.dispatcher result];
 }
 

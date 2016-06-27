@@ -8,5 +8,6 @@
 @interface CDRXCTestSuite : NSObject
 
 - (instancetype)initWithSpecRun:(CDRSpecRun *)specRun;
+- (CDRSpecRun *)specRun;
 
 @end

@@ -1,6 +1,8 @@
 #import "CDRXCTestObserver.h"
 #import "CDRFunctions.h"
 #import "CDRPrivateFunctions.h"
+#import "CDRXCTestCase.h"
+#import "CDRExample.h"
 
 @interface CDRXCTestObserver ()
 @property (assign) BOOL observedTestSuiteStart;
@@ -16,6 +18,10 @@
 
     id cedarTestSuite = CDRCreateXCTestSuite();
     [testSuite addTest:cedarTestSuite];
+}
+
+- (void)testSuiteDidFinish:(XCTestSuite *)testSuite {
+    
 }
 
 @end

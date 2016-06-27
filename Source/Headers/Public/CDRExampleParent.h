@@ -19,6 +19,7 @@ typedef void (^CDRSpecBlock)(void);
 - (NSMutableArray *)fullTextInPieces;
 
 - (NSUInteger)stackAddress;
+- (void)cleanUp;
 @end
 
 NS_ASSUME_NONNULL_END

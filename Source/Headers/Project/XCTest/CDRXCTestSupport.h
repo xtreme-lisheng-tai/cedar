@@ -3,9 +3,11 @@
 // This file redeclares various XCTest classes and selectors to make the compiler happy.
 
 @class XCTestSuite;
+@class XCTestCase;
 @protocol XCTestObservation
 @optional
 - (void)testSuiteWillStart:(XCTestSuite *)testSuite;
+- (void)testSuiteDidFinish:(XCTestSuite *)testSuite;
 @end
 
 

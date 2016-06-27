@@ -87,6 +87,10 @@ const char *CDRXSpecKey;
     return testSuite;
 }
 
+- (void)cleanUp {
+    
+}
+
 #pragma mark - Private
 
 - (Class)createTestCaseSubclass {
@@ -143,14 +147,21 @@ static void testMethodImplementation(id instance, SEL _cmd) {
                 [instance failWithException:[NSException failureInFile:example.failure.fileName atLine:example.failure.lineNumber withDescription:example.failure.description]];
             }
         }
-
         parentGroup = (CDRExampleGroup *)example.parent;
         while (![parentGroup isEqual:example.spec.rootGroup]) {
             if (![alreadyReportedExampleGroups containsObject:parentGroup]) {
                 [theDispatcher runDidFinishExampleGroup:parentGroup];
                 [alreadyReportedExampleGroups addObject:parentGroup];
             }
-
+            float parentGroupProgress = (parentGroup.examples.count == 0) ? 1.0 : 0.0;
+            for (CDRExampleBase *siblingExample in parentGroup.examples) {
+                parentGroupProgress += [siblingExample progress];
+            }
+            parentGroupProgress = parentGroupProgress / (float)[parentGroup.examples count];
+            if (parentGroupProgress == 1.0) {
+                [parentGroup cleanUp];
+            }
+            
             parentGroup = (CDRExampleGroup *)[parentGroup parent];
         }
     }

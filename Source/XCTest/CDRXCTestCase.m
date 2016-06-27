@@ -36,6 +36,10 @@ const char *CDRXTestInvocationsKey;
     [invocation invoke];
 }
 
+- (NSArray *)cdr_examples {
+    return [[self invocation] cdr_examples];
+}
+
 + (NSArray *)testInvocations {
     return objc_getAssociatedObject(self, &CDRXTestInvocationsKey);
 }

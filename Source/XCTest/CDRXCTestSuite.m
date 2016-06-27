@@ -9,13 +9,14 @@ const char *CDRSpecRunKey;
 @interface CDRXCTestSuite (FromXCTest)
 - (instancetype)initWithName:(NSString *)name;
 - (void)addTest:(id)test;
+- (NSArray *)tests;
 @end
 
-@interface CDRXCTestSuite ()
+@interface CDRXCTestSuite () <XCTestObservation>
 @property (nonatomic, retain) CDRSpecRun *specRun;
 @end
 
-@implementation CDRXCTestSuite
+@implementation CDRXCTestSuite 
 
 - (instancetype)initWithSpecRun:(CDRSpecRun *)specRun {
     if (self = [self initWithName:@"Cedar"]) {
@@ -40,6 +41,7 @@ IMP superPerformTest = class_getMethodImplementation(parentClass, @selector(perf
         super_performTest(aRun);
     }];
 }
+
 
 #pragma mark - Accessors
 
